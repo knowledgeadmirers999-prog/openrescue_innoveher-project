@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OpenRescue — AI Disaster Response</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-mark">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div>
+            <h2>Open<span>Rescue</span></h2>
+            <small>OPEN • CONNECT • RESPOND</small>
+        </div>
+
+    </div>
+
+    <nav>
+        <a href="#overview" class="active">Overview</a>
+        <a href="#map-section">Situation Map</a>
+        <a href="#coordination">Coordination</a>
+        <a href="#community">Community</a>
+    </nav>
+
+    <div class="nav-right">
+
+        <div class="network-status">
+            <i></i>
+            Network Active
+        </div>
+
+        <button class="report-btn" onclick="openReport()">
+            + Report Emergency
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="overview">
+
+    <div class="hero-left">
+
+        <div class="eyebrow">
+            <span class="pulse"></span>
+            AI-POWERED DISASTER RESPONSE
+        </div>
+
+        <h1>
+            When every second<br>
+            <em>matters, connect.</em>
+        </h1>
+
+        <p>
+            OpenRescue brings citizens, volunteers, NGOs and emergency
+            teams together to turn scattered information into coordinated action.
+        </p>
+
+        <div class="hero-actions">
+
+            <button class="primary-btn" onclick="openReport()">
+                Report an emergency
+                <span>→</span>
+            </button>
+
+            <button class="secondary-btn" onclick="scrollToMap()">
+                Explore live situation
+                <span>↗</span>
+            </button>
+
+        </div>
+
+        <div class="trust-row">
+
+            <div class="avatars">
+                <span>V</span>
+                <span>N</span>
+                <span>R</span>
+                <span>+</span>
+            </div>
+
+            <div>
+                <strong>Connected response network</strong>
+                <small>Citizens • Volunteers • NGOs • Teams</small>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT HUMAN CARD -->
+
+    <div class="human-card">
+
+        <div class="card-glow"></div>
+
+        <div class="human-top">
+            <span>COMMUNITY SIGNAL</span>
+            <span class="live-tag">● LIVE</span>
+        </div>
+
+        <div class="human-message">
+
+            <div class="message-icon">
+                ♥
+            </div>
+
+            <div>
+                <strong>People are asking for help</strong>
+                <p>
+                    18 reports have been received in the last hour.
+                    AI is helping teams identify the most urgent locations.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="human-stat">
+
+            <div>
+                <strong id="peopleCount">126</strong>
+                <span>people potentially affected</span>
+            </div>
+
+            <div class="mini-progress">
+                <div></div>
+            </div>
+
+        </div>
+
+        <div class="location-chip">
+            <span>⌖</span>
+            Current focus: Flood-prone zones
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SEARCH ================= -->
+
+<section class="search-area">
+
+    <div class="search-heading">
+
+        <span>01</span>
+
+        <div>
+            <small>UNDERSTAND THE SITUATION</small>
+            <h2>What is happening?</h2>
+        </div>
+
+    </div>
+
+    <div class="search-box">
+
+        <span class="search-icon">⌕</span>
+
+        <input
+            type="text"
+            id="disasterSearch"
+            placeholder="Search flood, earthquake, fire, landslide..."
+        >
+
+        <button onclick="searchDisaster()">
+            Analyze
+        </button>
+
+    </div>
+
+    <div class="quick-topics">
+
+        <span>Explore:</span>
+
+        <button onclick="setTopic('Flood')">Flood</button>
+        <button onclick="setTopic('Earthquake')">Earthquake</button>
+        <button onclick="setTopic('Fire')">Fire</button>
+        <button onclick="setTopic('Landslide')">Landslide</button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= AI ANALYSIS ================= -->
+
+<section class="analysis-section">
+
+    <div class="section-label">
+        <span>02</span>
+        <p>AI SITUATION ANALYSIS</p>
+    </div>
+
+    <div class="analysis-grid">
+
+        <div class="ai-card">
+
+            <div class="ai-header">
+
+                <div class="ai-icon">
+                    ✦
+                </div>
+
+                <div>
+                    <small>OPENRESCUE AI</small>
+                    <h3 id="analysisTitle">Flood situation detected</h3>
+                </div>
+
+                <span class="verified">
+                    AI READY
+                </span>
+
+            </div>
+
+            <div class="analysis-content">
+
+                <div class="severity">
+
+                    <div class="severity-circle">
+                        <strong id="severityNumber">78</strong>
+                        <small>/100</small>
+                    </div>
+
+                    <div>
+                        <span>SEVERITY INDEX</span>
+                        <h4 id="severityText">HIGH PRIORITY</h4>
+                        <p id="severityDescription">
+                            Multiple reports indicate rising water levels
+                            and possible route blockage.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="ai-tags">
+
+                    <span>Flood</span>
+                    <span>Route blockage</span>
+                    <span>People at risk</span>
+
+                </div>
+
+            </div>
+
+            <div class="ai-footer">
+
+                <span>AI confidence</span>
+
+                <div class="confidence">
+                    <div></div>
+                </div>
+
+                <strong>92%</strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRIORITY QUEUE -->
+
+        <div class="priority-card">
+
+            <div class="priority-heading">
+
+                <div>
+                    <small>RESPONSE QUEUE</small>
+                    <h3>Who needs help first?</h3>
+                </div>
+
+                <span class="count">04</span>
+
+            </div>
+
+
+            <div class="priority-item critical">
+
+                <div class="priority-number">01</div>
+
+                <div class="priority-info">
+                    <strong>Riverbank Community</strong>
+                    <span>42 people reported</span>
+                </div>
+
+                <b>CRITICAL</b>
+
+            </div>
+
+
+            <div class="priority-item">
+
+                <div class="priority-number">02</div>
+
+                <div class="priority-info">
+                    <strong>North Bridge</strong>
+                    <span>Route blocked</span>
+                </div>
+
+                <b>HIGH</b>
+
+            </div>
+
+
+            <div class="priority-item">
+
+                <div class="priority-number">03</div>
+
+                <div class="priority-info">
+                    <strong>Central Shelter</strong>
+                    <span>Supply request</span>
+                </div>
+
+                <b>MEDIUM</b>
+
+            </div>
+
+
+            <div class="priority-item">
+
+                <div class="priority-number">04</div>
+
+                <div class="priority-info">
+                    <strong>Hill View Road</strong>
+                    <span>Needs verification</span>
+                </div>
+
+                <b>LOW</b>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MAP ================= -->
+
+<section class="map-section" id="map-section">
+
+    <div class="section-heading-row">
+
+        <div>
+
+            <span class="section-number">03</span>
+
+            <div>
+                <small>GIS SITUATION VIEW</small>
+                <h2>See the response landscape</h2>
+            </div>
+
+        </div>
+
+        <div class="map-legend">
+
+            <span><i class="danger-dot"></i> Urgent</span>
+            <span><i class="safe-dot"></i> Shelter</span>
+            <span><i class="hospital-dot"></i> Hospital</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="map-layout">
+
+
+        <!-- MAP -->
+
+        <div class="map">
+
+            <div class="map-grid"></div>
+
+            <div class="road road-one"></div>
+            <div class="road road-two"></div>
+            <div class="road road-three"></div>
+
+            <div class="water-shape"></div>
+
+
+            <div class="map-label label-one">
+                RIVERBANK
+            </div>
+
+            <div class="map-label label-two">
+                CENTRAL ZONE
+            </div>
+
+
+            <!-- INCIDENT MARKERS -->
+
+            <button class="map-marker urgent marker-one"
+                    onclick="showIncident('Riverbank Community','Critical','42 people')">
+                !
+            </button>
+
+            <button class="map-marker urgent marker-two"
+                    onclick="showIncident('North Bridge','High','Route blocked')">
+                !
+            </button>
+
+            <button class="map-marker shelter marker-three">
+                +
+            </button>
+
+            <button class="map-marker hospital marker-four">
+                H
+            </button>
+
+
+            <div class="map-floating">
+
+                <strong>LIVE MAP</strong>
+                <span>Updated 34 sec ago</span>
+
+            </div>
+
+
+            <div class="map-scale">
+                500 m
+            </div>
+
+        </div>
+
+
+        <!-- MAP SIDE PANEL -->
+
+        <aside class="map-panel">
+
+            <div class="panel-top">
+
+                <div>
+                    <small>ACTIVE INCIDENTS</small>
+                    <h3>Response now</h3>
+                </div>
+
+                <span class="incident-count">18</span>
+
+            </div>
+
+
+            <div class="incident-card selected">
+
+                <div class="incident-icon flood-icon">
+                    ≋
+                </div>
+
+                <div>
+                    <strong>Riverbank Community</strong>
+                    <p>Flood • 42 people</p>
+                </div>
+
+                <span class="arrow">→</span>
+
+            </div>
+
+
+            <div class="incident-card">
+
+                <div class="incident-icon fire-icon">
+                    ♨
+                </div>
+
+                <div>
+                    <strong>Industrial Road</strong>
+                    <p>Fire • Response assigned</p>
+                </div>
+
+                <span class="arrow">→</span>
+
+            </div>
+
+
+            <div class="incident-card">
+
+                <div class="incident-icon land-icon">
+                    ◒
+                </div>
+
+                <div>
+                    <strong>Hill View</strong>
+                    <p>Landslide • Verification</p>
+                </div>
+
+                <span class="arrow">→</span>
+
+            </div>
+
+
+            <button class="view-all">
+                View all incidents →
+            </button>
+
+        </aside>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COORDINATION ================= -->
+
+<section class="coordination" id="coordination">
+
+    <div class="coordination-intro">
+
+        <span class="section-number">04</span>
+
+        <small>FROM REPORT TO RESCUE</small>
+
+        <h2>
+            One signal.<br>
+            <em>Many helping hands.</em>
+        </h2>
+
+        <p>
+            OpenRescue keeps everyone aligned as an incident moves
+            from the first report to resolution.
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-line"></div>
+
+
+        <div class="timeline-step done">
+
+            <div class="timeline-icon">✓</div>
+
+            <small>01</small>
+
+            <h3>Reported</h3>
+
+            <p>
+                Citizen submits photo,
+                description and location.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-step active-step">
+
+            <div class="timeline-icon">AI</div>
+
+            <small>02</small>
+
+            <h3>Assigned</h3>
+
+            <p>
+                AI evaluates severity
+                and response priority.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-step">
+
+            <div class="timeline-icon">→</div>
+
+            <small>03</small>
+
+            <h3>Rescue in Progress</h3>
+
+            <p>
+                Authorized teams coordinate
+                tasks and resources.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-step">
+
+            <div class="timeline-icon">♥</div>
+
+            <small>04</small>
+
+            <h3>Resolved</h3>
+
+            <p>
+                Situation is updated and
+                the community is informed.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COMMUNITY ================= -->
+
+<section class="community" id="community">
+
+    <div class="community-header">
+
+        <div>
+
+            <span class="section-number">05</span>
+
+            <small>THE HUMAN NETWORK</small>
+
+            <h2>
+                Response isn't<br>
+                a system. It's <em>people.</em>
+            </h2>
+
+        </div>
+
+        <p>
+            OpenRescue is designed as an open ecosystem where
+            communities, NGOs, researchers and developers can
+            contribute to better disaster response.
+        </p>
+
+    </div>
+
+
+    <div class="community-grid">
+
+        <div class="community-card large">
+
+            <div class="community-icon">◉</div>
+
+            <small>COMMUNITY PULSE</small>
+
+            <h3>126 people connected to active reports</h3>
+
+            <div class="pulse-bars">
+                <span style="height:35%"></span>
+                <span style="height:55%"></span>
+                <span style="height:45%"></span>
+                <span style="height:80%"></span>
+                <span style="height:65%"></span>
+                <span style="height:95%"></span>
+                <span style="height:72%"></span>
+                <span style="height:100%"></span>
+            </div>
+
+        </div>
+
+
+        <div class="community-card">
+
+            <div class="community-icon">⌘</div>
+
+            <small>OPEN SOURCE</small>
+
+            <h3>Build what communities need.</h3>
+
+            <p>
+                Contribute datasets, AI models,
+                localization and new response tools.
+            </p>
+
+            <button>
+                Explore project →
+            </button>
+
+        </div>
+
+
+        <div class="community-card">
+
+            <div class="community-icon">◎</div>
+
+            <small>FUTURE READY</small>
+
+            <h3>Designed to grow with the crisis.</h3>
+
+            <p>
+                Offline reporting, multilingual support,
+                SMS alerts and drone-based data can be added.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-brand">
+
+        <div class="brand-mark">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div>
+            <strong>OpenRescue</strong>
+            <small>AI-powered open disaster response</small>
+        </div>
+
+    </div>
+
+
+    <div class="footer-message">
+        Technology should help people find help faster.
+    </div>
+
+
+    <div class="footer-status">
+        <i></i>
+        Open-source concept
+    </div>
+
+</footer>
+
+</main>
+
+
+<!-- ================= REPORT MODAL ================= -->
+
+<div class="modal-overlay" id="reportModal">
+
+    <div class="report-modal">
+
+        <button class="close-modal" onclick="closeReport()">×</button>
+
+        <div class="modal-number">REPORT • 01</div>
+
+        <h2>Tell us what is happening.</h2>
+
+        <p>
+            Your information can help the response network understand
+            the situation faster.
+        </p>
+
+
+        <label>What happened?</label>
+
+        <select id="reportType">
+
+            <option>Flood</option>
+            <option>Earthquake</option>
+            <option>Fire</option>
+            <option>Landslide</option>
+
+        </select>
+
+
+        <label>Describe the situation</label>
+
+        <textarea
+            id="reportDescription"
+            placeholder="Example: Water has entered several homes near the river..."
+        ></textarea>
+
+
+        <div class="modal-row">
+
+            <div>
+
+                <label>Location</label>
+
+                <input
+                    type="text"
+                    id="reportLocation"
+                    placeholder="Enter location"
+                >
+
+            </div>
+
+            <div>
+
+                <label>People affected</label>
+
+                <input
+                    type="number"
+                    placeholder="Approx."
+                >
+
+            </div>
+
+        </div>
+
+
+        <button class="submit-report" onclick="submitReport()">
+            Send report for AI analysis →
+        </button>
+
+        <small class="privacy-note">
+            Your report is used to coordinate emergency response.
+        </small>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div class="toast" id="toast">
+
+    <span>✦</span>
+
+    <div>
+        <strong id="toastTitle">AI Analysis Complete</strong>
+        <p id="toastMessage">Incident priority has been updated.</p>
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
